@@ -32,8 +32,8 @@ export default function Page() {
             width={1000}
             height={760}
             className="hidden md:block"
-            placeholder="blur"
-            blurDataURL=''
+            
+            
             alt="Screenshots of the dashboard project showing desktop version"
           />
           <Image
