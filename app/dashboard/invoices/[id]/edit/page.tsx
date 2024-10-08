@@ -4,6 +4,7 @@ import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { PageProps } from '@/.next/types/app/dashboard/invoices/[id]/edit/page';
 
 export const metadata: Metadata = {
   title: 'Invoices-Edit',
@@ -11,8 +12,9 @@ export const metadata: Metadata = {
 
 
 
-export default async function Page(params: { id: any; }) {
-    const id = await params.id ;
+export default async function Page({ params }: PageProps) {
+  const resolvedParams = await params;
+  const id = resolvedParams?.id?.toString() || "";
     const [invoice, customers] = await Promise.all([
         fetchInvoiceById(id),
         fetchCustomers(),
